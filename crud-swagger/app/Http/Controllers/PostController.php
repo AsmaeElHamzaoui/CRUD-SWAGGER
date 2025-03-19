@@ -43,6 +43,23 @@ class PostController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    /**
+     * @OA\Post(
+     *      path="/api/posts",
+     *      operationId="storePost",
+     *      tags={"Posts"},
+     *      summary="Créer un post",
+     *      @OA\RequestBody(
+     *          @OA\JsonContent(
+     *              required={"title","content"},
+     *              @OA\Property(property="title", type="string"),
+     *              @OA\Property(property="content", type="string"),
+     *          ),
+     *      ),
+     *      @OA\Response(response=201, description="Post créé"),
+     * )
+     */
     public function store(Request $request)
     {
         $validated = $request->validate([
