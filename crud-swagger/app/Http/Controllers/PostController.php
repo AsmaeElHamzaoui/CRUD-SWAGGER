@@ -5,6 +5,16 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
+/**
+ * @OA\Info(
+ *      version="1.0.0",
+ *      title="Laravel Post API",
+ *      description="API de gestion des posts",
+ *      @OA\Contact(
+ *          email="admin@example.com"
+ *      ),
+ * )
+ */
 class PostController extends Controller
 {
     /**
@@ -12,6 +22,8 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     
     public function index()
     {
         return response()->json(Post::all(), 200);
