@@ -114,6 +114,38 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
+
+    /**
+     * @OA\Put(
+     *      path="/api/posts/{id}",
+     *      operationId="updatePost",
+     *      tags={"Posts"},
+     *      summary="Mettre à jour un post",
+     *      description="Met à jour les informations d'un post",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="ID du post",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(type="integer")
+     *      ),
+     *      @OA\RequestBody(
+     *          required=true,
+     *          @OA\JsonContent(
+     *              @OA\Property(property="title", type="string", example="Nouveau titre"),
+     *              @OA\Property(property="content", type="string", example="Nouveau contenu du post")
+     *          )
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Post mis à jour avec succès"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Post non trouvé"
+     *      )
+     * )
+     */
     public function update(Request $request, Post $post)
     {
         $validated = $request->validate([
