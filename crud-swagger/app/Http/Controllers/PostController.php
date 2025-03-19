@@ -163,6 +163,32 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
+
+    
+    /**
+     * @OA\Delete(
+     *      path="/api/posts/{id}",
+     *      operationId="deletePost",
+     *      tags={"Posts"},
+     *      summary="Supprimer un post",
+     *      description="Supprime un post existant",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="ID du post",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(type="integer")
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Post supprimé avec succès"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Post non trouvé"
+     *      )
+     * )
+     */
     public function destroy(Post $post)
     {
         $post->delete();
