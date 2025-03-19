@@ -23,7 +23,15 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     
+     /**
+     * @OA\Get(
+     *      path="/api/posts",
+     *      operationId="getPostsList",
+     *      tags={"Posts"},
+     *      summary="Obtenir tous les posts",
+     *      @OA\Response(response=200, description="Liste des posts"),
+     * )
+     */ 
     public function index()
     {
         return response()->json(Post::all(), 200);
