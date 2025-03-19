@@ -77,6 +77,31 @@ class PostController extends Controller
      * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
+
+     /**
+     * @OA\Get(
+     *      path="/api/posts/{id}",
+     *      operationId="getPostById",
+     *      tags={"Posts"},
+     *      summary="Obtenir un post par ID",
+     *      description="Retourne un post spécifique selon son ID",
+     *      @OA\Parameter(
+     *          name="id",
+     *          description="ID du post",
+     *          required=true,
+     *          in="path",
+     *          @OA\Schema(type="integer")
+     *      ),
+     *      @OA\Response(
+     *          response=200,
+     *          description="Post récupéré avec succès"
+     *      ),
+     *      @OA\Response(
+     *          response=404,
+     *          description="Post non trouvé"
+     *      )
+     * )
+     */
     public function show(Post $post)
     {
         return response()->json($post, 200);
